@@ -33,12 +33,13 @@ This repository hosts publication-grade lecture notes and reference monographs f
 
 ```text
 .
-├── main.typ                                # Master document entrypoint & configuration
-├── main.pdf                                # Compiled PDF monograph (13 pages)
-├── refs.bib                                # BibTeX literature references
-├── chapters/
-│   ├── common.typ                          # Environment definitions (definitions, theorems, examples)
-│   └── ch01_foundations_and_components.typ # Chapter 1: Foundations & Component Modelling
+├── notes/                                  # Monograph sources & compilation
+│   ├── main.typ                            # Master document entrypoint & configuration
+│   ├── main.pdf                            # Compiled PDF monograph (13 pages)
+│   ├── refs.bib                            # BibTeX literature references
+│   └── chapters/
+│       ├── common.typ                      # Environment definitions (definitions, theorems, examples)
+│       └── ch01_foundations_and_components.typ # Chapter 1: Foundations & Component Modelling
 ├── contents/                               # Extracted markdown source summaries
 └── sources/                                # Original reference material archives
 ```
@@ -48,11 +49,11 @@ This repository hosts publication-grade lecture notes and reference monographs f
 To compile the monograph to PDF:
 
 ```bash
-typst compile main.typ main.pdf
+typst compile notes/main.typ notes/main.pdf
 ```
 
 To watch for file changes during drafting:
 
 ```bash
-typst watch main.typ main.pdf
+typst watch notes/main.typ notes/main.pdf
 ```
