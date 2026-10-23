@@ -88,10 +88,7 @@ nav:
   - Troubleshooting & Diagnostics:
       - Common Errors & Fixes: troubleshooting/errors.md
       - Diagnostic Tools: troubleshooting/diagnostics.md
-  - Complete Examples:
-      - 01 Brayton Gas Turbine: examples/brayton_cycle.md
-      - 02 Vapor Compression Heat Pump: examples/heat_pump.md
-      - 03 Dynamic Heated Tank: examples/dynamic_tank.md
+
   - API Reference:
       - Core API: api/core.md
       - Components API: api/components.md
