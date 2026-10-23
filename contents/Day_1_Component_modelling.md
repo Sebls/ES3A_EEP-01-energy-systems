@@ -1,414 +1,298 @@
-# Day 1_Component modelling
+# Component Modeling
 
-> Source: `sources/Dossier partage SE/Cours/Seance 1 Bilan energie/Day 1_Component modelling.pptx`
-
-
----
-
-## Slide 1
-
-### Component modeling
-
-
-### 2019
-
-
-### 1
-
-
-### Cong-Toan TRAN
-
+> Source: `sources/Dossier partage SE/Cours/Seance 1 Bilan energie/Day 1_Component modelling.pptx`  
+> Author: Cong-Toan TRAN (2019)  
+> Course: TESM (Thermodynamic Energy System Modelling)
 
 ---
 
-## Slide 2
+## 1. 1er principe de la thermodynamique (First Law)
 
-### 1er principe de la thermodynamique
+### 1.1 Système fermé (Closed System)
+*Pas de flux de matière au travers de la frontière.*
 
+#### Bilan d’énergie (énergies macroscopiques négligées)
 
-### Système fermé:  pas de flux de matière au travers de la frontière
+$$\dot{Q} - \dot{W} = \frac{dU}{dt}$$
 
+#### Par convention :
+- **Chaleur absorbée par le système :** positif ($\dot{Q} > 0$)
+- **Travail produit par le système :** positif ($\dot{W} > 0$)
 
-### Bilan d’énergie (énergies macroscopiques négligées)
+#### 2 types de travail :
+- **Travail externe** donné par un moyen extérieur : $\dot{W}_{\text{external}}$
+- **Travail de frontière** lié à la dilatation du système : $\dot{W}_{\text{boundary}}$
 
-  - Par convention:
-    - Chaleur absorbée par le system:		positif
-    - Travail produit par le system: 	   		positif
-  - 2 types de travail:
-    - Travail externe donné par un moyen extérieur
-    - Travail de frontière lié à la dilatation du système
+$$\dot{W} = \dot{W}_{\text{external}} + \dot{W}_{\text{boundary}} \quad \text{avec} \quad \delta W_{\text{boundary}} = P \, dV \implies \dot{W}_{\text{boundary}} = P \frac{dV}{dt}$$
 
-### Pour une évolution à volume constant (isochore):
+#### Évolutions particulières :
+- **Pour une évolution à volume constant (isochore) :**  
+  $\dot{W}_{\text{boundary}} = 0$
 
+  $$\dot{Q} - \dot{W}_{\text{external}} = \frac{dU}{dt} = c_v \frac{dT}{dt}$$
 
-### Pour une évolution à pression constant (isobar):
+  *(où $c_v$ est la chaleur spécifique à volume constant)*
 
+- **Pour une évolution à pression constante (isobare) :**  
+  $\dot{W}_{\text{boundary}} = P \frac{dV}{dt} \implies \frac{dH}{dt} = \frac{dU}{dt} + P \frac{dV}{dt}$
 
-### 2
+  $$\dot{Q} - \dot{W}_{\text{external}} = \frac{dH}{dt} = c_p \frac{dT}{dt}$$
 
-
-### (cv: chaleur spécifique à volume constant )
-
-
-### (cp: chaleur spécifique à pression constant )
-
-
----
-
-## Slide 3
-
-### 1er principe de la thermodynamique
-
-
-### Système ouvert: échange de matière possible au travers de la frontière
-
-
-### Conservation de masse (ou bilan de masse)
-
-  - Par convention: 		positif, 		négatif
-
-### Travail d’écoulement d’un fluide entrant ou sortant d’un système:
-
-
-### Conservation d’énergie (ou bilan d’énergie)
-
-
-### 3
-
-
-### (les énergies potentielles et cinétiques souvent négligées)
-
+  *(où $c_p$ est la chaleur spécifique à pression constante)*
 
 ---
 
-## Slide 4
+### 1.2 Système ouvert (Open System)
+*Échange de matière possible au travers de la frontière.*
 
-### 2ème principe de la thermodynamique
+#### Conservation de masse (Bilan de masse)
 
+$$\dot{m}_{\text{in}} + \dot{m}_{\text{out}} = \frac{dm_{\text{system}}}{dt}$$
 
-### « La chaleur ne passe pas spontanément d’un corps froid sur un corps chaud »
+- **Par convention :** fluide entrant $\dot{m}_{\text{in}} > 0$, fluide sortant $\dot{m}_{\text{out}} < 0$.
 
+#### Travail d’écoulement d’un fluide entrant ou sortant d’un système :
 
-### Inégalité de Clausius:
+$$\dot{W} = \dot{W}_{\text{external}} + \dot{W}_{\text{boundary}} + \dot{W}_{\text{flow}} \quad \text{avec} \quad \dot{W}_{\text{flow}} = - \sum_{\text{ports}} P_i \dot{V}_i$$
 
-  - L’égalité  procédé réversible
-  - Sinon, irréversible
+#### Conservation d’énergie (Bilan d’énergie)
 
-### Définition de l’entropie:
+$$\dot{Q} - \left( \dot{W}_{\text{external}} + \dot{W}_{\text{boundary}} \right) + \sum_i \dot{m}_i \left( h_i + \frac{v_i^2}{2} + g z_i \right) = \frac{dU_{\text{system}}}{dt}$$
 
-  - s est aussi une variable d’état
-
-### Principe de la génération d’entropie:
-
-  - En condition stabilisée:
-
-### 4
-
+*(les énergies cinétiques $\frac{v_i^2}{2}$ et potentielles $g z_i$ sont souvent négligées)*
 
 ---
 
-## Slide 5
+## 2. 2ème principe de la thermodynamique (Second Law)
 
-### Expansion valve modeling
+> *« La chaleur ne passe pas spontanément d’un corps froid sur un corps chaud »*
 
+### Inégalité de Clausius :
 
-### Modeling assumptions:
+$$\oint \frac{\delta Q}{T} \le 0$$
 
-  - No mechanical work  W=0
-  - Small external surface  Q=0
-  - Small control volume  Esystem, msystem neglicted
-  - Kinetic energy neglected
+- L’égalité ($= 0$) $\longrightarrow$ procédé **réversible**
+- L'inégalité ($< 0$) $\longrightarrow$ procédé **irréversible**
 
-### Model:
+### Définition de l’entropie :
+$s$ est une variable d’état définie par :
 
-  - Flow rate controlled by the opening level of the valve
-    - k: parameter of the valve, generally determined thanks to nominal working points
-    - opening : between 0 (closed) and 1 (completely opened)
-  - Quasi-isenthalpic expansion process:
+$$dS = \left( \frac{\delta Q}{T} \right)_{\text{reversible}}$$
 
-### 5
+### Principe de la génération d’entropie :
 
+$$\dot{S}_{\text{in}} - \dot{S}_{\text{out}} + \dot{S}_{\text{generation}} = \frac{dS_{\text{system}}}{dt}$$
 
----
+Avec $\dot{S}_{\text{generation}} \ge 0$.
 
-## Slide 6
+#### En condition stabilisée ($\frac{dS_{\text{system}}}{dt} = 0$) :
 
-### Closed tank
-
-
-### Modeling assumptions:
-
-  - No mechanical work  W=0
-  - Kinetic and potential energies neglected
-  - Small control volume ?
-  - Small external surface ?
-
-### Mass balance:
-
-
-### Energy balance:
-
-
-### 6
-
+$$\sum_i \dot{m}_i s_i + \sum_j \frac{\dot{Q}_j}{T_j} + \dot{S}_{\text{generation}} = 0$$
 
 ---
 
-## Slide 7
+## 3. Expansion Valve Modeling (Détendeur)
 
-### Compression modeling (1)
+![Expansion Valve](assets/day_1_component_modelling_image25.jpeg)
 
+### Modeling Assumptions:
+- No mechanical work $\longrightarrow \dot{W} = 0$
+- Small external surface $\longrightarrow \dot{Q} = 0$
+- Small control volume $\longrightarrow E_{\text{system}}, m_{\text{system}}$ neglected
+- Kinetic energy neglected
 
-### Ideal and real processes
+### Energy Balance:
 
+$$\dot{Q}_{\text{net,in}} - \dot{W}_{\text{net,out}} + \sum_i \dot{m}_i \left( h_i + \frac{v_i^2}{2} \right) = \frac{dE_{\text{system}}}{dt} \implies h_{\text{in}} \approx h_{\text{out}}$$
 
-### 7
+Quasi-isenthalpic expansion process:
 
+$$h_{\text{in}} \approx h_{\text{out}}$$
 
----
+### Flow Rate Model:
+Flow rate controlled by the opening level of the valve:
 
-## Slide 8
+$$\dot{m} = k \cdot \text{opening} \cdot \Delta p$$
 
-### Compression modeling (2)
-
-
-### Isentropic efficiency
-
-
-### Modeling assumptions:
-
-  - Small external surface  Q=0
-  - Small internal volume  Esystem, msystem neglected
-  - Kinetic energy neglected
-
-### Model:
-
-  - Isentropic efficiency (also called adiabatic efficiency) supposed to be known:
-  - Adiabatic process:
-
-### Isentropic efficiency:
-
-  - For a (liquid) pump : close to 1 (quasi-isentropic)
-  - For a (vapor) compressor: h depend essentially on working conditions  h(T,p) needs to be known (via experimental tests)
-
-### 8
-
+- $k$ : parameter of the valve, generally determined thanks to nominal working points
+- $\text{opening}$ : between $0$ (closed) and $1$ (completely opened)
 
 ---
 
-## Slide 9
+## 4. Closed Tank (Réservoir fermé)
 
-### Compression modeling (3)
+<div align="center">
+  <img src="assets/day_1_component_modelling_image29_cropped.png" alt="Closed Tank" width="220" />
+</div>
 
+### Modeling Assumptions:
+- No mechanical work $\longrightarrow \dot{W} = 0$
+- Kinetic and potential energies neglected
+- Finite control volume (mass and internal energy accumulation are significant)
+- External heat transfer with surroundings: $\dot{Q} = K \cdot S \cdot (T_{\text{tank}} - T_{\text{amb}})$
 
-### How to calculate the flow rate ?
+### Governing Equations:
 
+#### Mass Balance:
 
-### Volume metric type :
+$$\sum_i \dot{m}_i = \frac{dM_{\text{tank}}}{dt}$$
 
-  - Ex: reciprocating and rotary compressors
-  - Rotational speed : number of turns of the rotor per second
-  - Flowrate depends on swept volume Vs, rotational speed and the inlet condition:
+#### General Energy Equation:
 
-### Dynamic type :
+$$\dot{Q} - \left( \dot{W}_{\text{external}} + \dot{W}_{\text{boundary}} \right) + \sum_i \dot{m}_i \left( h_i + \frac{v_i^2}{2} + g z_i \right) = M_{\text{tank}} \frac{du_{\text{tank}}}{dt}$$
 
-  - Ex: Centrifugal compressor
-  - A specific correlation between the flowrate and working conditions is required
+#### Simplified Energy Balance for the Closed Tank:
 
-### Expansion (turbine) modeling can be done using the similar method:
-
-  - Example of correlation for a centrifuge turbine
-
-### 9
-
-
-### (K: characteristic constant of the component)
-
+$$\dot{Q} + \sum_i \dot{m}_i h_i = M_{\text{tank}} \frac{du_{\text{tank}}}{dt} \quad \text{with} \quad \dot{Q} = K \cdot S \cdot (T_{\text{tank}} - T_{\text{amb}})$$
 
 ---
 
-## Slide 10
+## 5. Compression Modeling (Compresseurs)
 
-### Analysis of heat exchanger
+### 5.1 Ideal and Real Processes
 
-
-### Simplified case
-
-- Heat exchanger allow to exchange heat between 2 fluids of different temperatures without mixing them
-
-### 10
-
-
-### Assumptions:
-
-
-### Thermodynamics properties being constant
-
-
-### Wall thickness neglected
-
-
-### Exchange surfaces with the wall being the same
-
-
-### temperature difference
-
-
-### log mean
-
-
-### temperature difference
-
-
-### C, c : heat capacity rates (J/K)
-
+![Compression Process Diagram](assets/day_1_component_modelling_image30_clean.png)
 
 ---
 
-## Slide 11
+### 5.2 Isentropic Efficiency
 
-### Analysis of heat exchanger (2)
+#### Modeling Assumptions:
+- Small external surface $\longrightarrow \dot{Q} = 0$
+- Small internal volume $\longrightarrow E_{\text{system}}, m_{\text{system}}$ neglected
+- Kinetic energy neglected
 
+#### Model:
+- **Adiabatic process:**
 
-### Parallel-flow and counter-flow types
+  $$\dot{W}_{\text{net,out}} = \sum_i \dot{m}_i h_i = \dot{m}(h_{\text{out}} - h_{\text{in}})$$
 
+- **Isentropic efficiency (also called adiabatic efficiency) supposed to be known:**
 
-### These results are still correct in the following conditions:
+  $$\eta_{\text{comp}} = \frac{w_{\text{isentropic}}}{w_{\text{real}}} \approx \frac{h_{\text{out, isentropic}} - h_{\text{in}}}{h_{\text{out, real}} - h_{\text{in}}}$$
 
-  - The exchange surfaces are different
-  - The wall conduction is considerable
-  - Counter-flow (a=-1) or parallel-flow (a=1)
-
-### 11
-
-
-### a = circulation indicator
-
-
----
-
-## Slide 12
-
-### Heat exchanger modeling
-
-
-### Objective of design
-
-
-### Modeling a heat exchanger depends on the objectives:
-
-  - Objective of simulation (the system is already existed)
-  - Objective of design (the system is to be sized)
-
-### 12
-
-
-### 1b
-
-
-### 1a
-
-
-### 2a
-
-
-### 2b
-
+- **For a (liquid) pump :** close to 1 (quasi-isentropic)
+- **For a (vapor) compressor :** $h$ depends essentially on working conditions $\longrightarrow h(T, p)$ needs to be known (via experimental tests or fluid database)
 
 ---
 
-## Slide 13
+### 5.3 How to Calculate the Flow Rate?
 
-### Heat exchanger modeling for design
+#### Volumetric Type
+*(Ex: reciprocating and rotary compressors)*
+- Rotational speed: number of turns of the rotor per second ($f_{\text{rotor}}$)
+- Flowrate depends on swept volume $V_s$, rotational speed and the inlet condition:
 
+  $$\dot{V} = V_s \cdot f_{\text{rotor}}$$
 
-### 13
+  $$\dot{m} = \dot{V} \cdot \rho_{\text{inlet}}$$
 
+#### Dynamic Type
+*(Ex: centrifugal compressor / centrifugal turbine)*
+- A specific correlation between the flowrate and working conditions is required.
+- Expansion (turbine) modeling can be done using a similar method:
+- **Example of correlation for a centrifugal turbine:**
 
-### UA calculated
+  $$\dot{m} = K \sqrt{\frac{p_{\text{in}}^2 - p_{\text{out}}^2}{T_{\text{in}}}}$$
 
-
-### A, a calculated
-
-
-### For given U, u
-
-
-### and surface ratio A/a
-
-
-### 1b
-
-
-### 1a
-
-
-### 2a
-
-
-### 2b
-
+  *(where $K$ is the characteristic constant of the component)*
 
 ---
 
-## Slide 14
+## 6. Analysis of Heat Exchanger (HEX)
 
-### Pinch of a heat exchanger
+### 6.1 Simplified Case
 
-- Pinch is defined as the minimum difference of the 2 fluid temperatures along the HEX
-  - In the case of no phase change, the pinch location is at one of two sides of the HEX
+Heat exchangers allow the exchange of heat between 2 fluids of different temperatures without mixing them.
 
-### Pinch value results from the HEX surface (i.e. the HEX cost)
+![Heat Exchanger Overview](assets/day_1_component_modelling_image40.png)
 
-  - In practice, a HEX is sized by fixing a pinch value
+#### Assumptions:
+- Thermodynamic properties being constant
+- Wall thickness neglected
+- Exchange surfaces with the wall being the same
 
-### 14
+#### Local Equations:
 
+$$\delta \dot{Q} = U (T - t) \, dA = -C \, dT = c \, dt \quad \text{with} \quad dA = P \, dx \quad \text{and} \quad \frac{1}{U} = \frac{1}{H} + \frac{1}{h}$$
 
----
+*(where $C, c$ are the heat capacity rates in $\text{W/K}$ or $\text{J/(K}\cdot\text{s)}$)*
 
-## Slide 15
+#### Temperature Difference Along the Exchanger:
 
-### Heat exchanger modeling for simulation
+$$\Delta T(x) = \Delta T_0 \exp\left( - U P \left[ \frac{1}{C} + \frac{1}{c} \right] x \right) \quad \text{with} \quad \Delta T = T - t$$
 
+#### Overall Heat Exchange Rate and Log Mean Temperature Difference (LMTD / DTLM):
 
-### The method NUT calculateT_out with sequential calculs
-
-
-### 15
-
-
-### T_out calculated,
-
-
-### but require solving log function
-
-
-### T_out
-
+$$\dot{Q} = U A \, \Delta T_{\text{LM}} \quad \text{with} \quad \Delta T_{\text{LM}} = \frac{\Delta T_{\text{left}} - \Delta T_{\text{right}}}{\ln\left( \frac{\Delta T_{\text{left}}}{\Delta T_{\text{right}}} \right)}$$
 
 ---
 
-## Slide 16
+### 6.2 Parallel-Flow and Counter-Flow Types
 
-### Effectiveness of heat exchanger
+These results are still correct in the following conditions:
+- The exchange surfaces are different
+- The wall conduction is considerable
+- Counter-flow ($a = -1$) or parallel-flow ($a = 1$)
 
-- Effectiveness = the ratio of actual heat transferred to the maximum possible heat transfer
+![Parallel and Counter Flow Schematics](assets/day_1_component_modelling_image41.png)
 
-### Effectiveness result from the HEX surface (i.e. the HEX cost)
+$$\dot{Q} = (UA) \, \Delta T_{\text{LM}} \quad \text{with} \quad \Delta T_{\text{LM}} = \frac{\Delta T_{\text{left}} - \Delta T_{\text{right}}}{\ln\left( \frac{\Delta T_{\text{left}}}{\Delta T_{\text{right}}} \right)}$$
 
+Where $a$ is the **circulation indicator** ($a = -1$ for counter-flow, $a = +1$ for parallel-flow):
 
-### Effectiveness of counter flow > Effectiveness of parallel flow
-
-
-### 16
-
+$$\Delta T(x) = \Delta T_0 \exp\left( - \frac{UA}{L} \left[ \frac{1}{C} + \frac{1}{a \, c} \right] x \right) \quad \text{avec} \quad \frac{1}{UA} = \frac{1}{H S} + R_p + \frac{1}{h s}$$
 
 ---
 
-## Slide 17
+### 6.3 Heat Exchanger Modeling for Design (Sizing Mode)
 
-### Thank you !
+Modeling a heat exchanger depends on the objectives:
+- **Objective of simulation:** the system already exists (known geometry $A, UA$, calculate $T_{\text{out}}$)
+- **Objective of design:** the system is to be sized (known duty and target temperatures/pinch, calculate $A, UA$)
 
+#### Design Equations:
 
-### 17
+$$\dot{Q} = \dot{m}_1 (h_{1b} - h_{1a})$$
+
+$$\dot{Q} = \dot{m}_2 (h_{2a} - h_{2b})$$
+
+$$\dot{Q} = UA \, \Delta T_{\text{LM}}$$
+
+- Additional constraint: given temperatures, pinch point, etc.
+- $\longrightarrow UA$ calculated.
+- $\longrightarrow A, a$ calculated for given heat transfer coefficients $U, u$ and surface ratio $A/a$.
+
+---
+
+### 6.4 Pinch of a Heat Exchanger
+
+- **Definition:** The pinch is defined as the **minimum difference** of the 2 fluid temperatures along the heat exchanger ($\Delta T_{\text{pinch}}$).
+- In the case of **no phase change**, the pinch location is at **one of the two sides** of the heat exchanger ($x = 0$ or $x = L$).
+- Pinch value results directly from the heat exchanger surface area (i.e. the HEX capital cost).
+- In industrial practice, a heat exchanger is sized by fixing a design pinch value.
+
+---
+
+### 6.5 Heat Exchanger Modeling for Simulation ($\varepsilon - \text{NTU}$ Method)
+
+When simulating an existing heat exchanger, the outlet temperatures $T_{\text{out}}$ must be determined:
+- Using $\dot{Q} = UA \Delta T_{\text{LM}}$ directly requires solving an implicit logarithmic equation.
+- The **NUT / NTU method** allows calculating $T_{\text{out}}$ via explicit, sequential calculations:
+
+$$\text{NUT} = \frac{UA}{C_{\min}}$$
+
+$$\text{effectiveness } \varepsilon = f(\text{NUT}, C_{\min}/C_{\max})$$
+
+---
+
+### 6.6 Effectiveness of a Heat Exchanger ($\varepsilon$)
+
+- **Definition:** 
+
+  $$\varepsilon = \frac{\dot{Q}_{\text{exchanged}}}{\dot{Q}_{\max}} = \frac{t_0 - t_L}{T_0 - t_L}$$
+
+- Effectiveness results from the HEX surface area (i.e. the HEX cost).
+- **Thermodynamic comparison:**
+
+  $$\varepsilon_{\text{counter-flow}} > \varepsilon_{\text{parallel-flow}}$$

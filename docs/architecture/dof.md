@@ -20,16 +20,8 @@ Caldis eliminates this ambiguity before invoking the solver using **structural D
 
 Before running any Newton iteration or homotopy continuation, `solve(sys)` and `simulate(sys)` run `preflight(sys)`.
 
-```mermaid
-flowchart TD
-    A[Assemble System] --> B[check_dof]
-    B -->|n_unknowns != n_equations| C[DOFReport Error: STOP]
-    B -->|Square: n_unknowns == n_equations| D[check_startpoint]
-    D -->|Non-finite residual / CoolProp crash| E[Start Point Evaluability Error: STOP]
-    D -->|Evaluables finite| F[check_start_sanity]
-    F -->|Warnings: Unphysical starts| G[Display Non-blocking Warnings]
-    F -->|Clean| H[Enter Solvers]
-```
+![Degrees of Freedom & Preflight Validation Pipeline](../assets/dof-preflight.svg)
+
 
 ### 1. Counting Rule
 

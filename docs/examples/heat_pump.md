@@ -6,15 +6,8 @@ This example models a subcritical vapor-compression heat pump loop operating on 
 
 ## Schematic
 
-```
-          ┌──────── [Condenser (SizingHX)] ◄────────┐
-          │                                         │
-          ▼                                         │
-  [Expansion Valve]                           [Compressor]
-          │                                         ▲
-          ▼                                         │
-          └────────► [Evaporator (SizingHX)] ───────┘
-```
+![Vapor-Compression Heat Pump Closed Loop Schematic](../assets/heat-pump-schematic.svg)
+
 
 ---
 

@@ -1,178 +1,85 @@
-# Day 1_Intro TESM Course
+# Thermodynamics Energy System Modelling (TESM) Course
 
-> Source: `sources/Dossier partage SE/Cours/Seance 1 Bilan energie/Day 1_Intro TESM Course.pptx`
-
-
----
-
-## Slide 1
-
-### Themodynamics Energy System Modelling (TESM) course
-
-
-### 2019
-
-
-### 1
-
-
-### Cong Toan TRAN
-
+> Source: `sources/Dossier partage SE/Cours/Seance 1 Bilan energie/Day 1_Intro TESM Course.pptx`  
+> Author: Cong Toan TRAN (2019)  
+> Contact: `cong-toan.tran@mines-paristech.fr`
 
 ---
 
-## Slide 2
+## 1. Energy Systems
 
-### Energy systems
+- **Everywhere in human society:** Energy systems provide fundamental needs of daily life (power, heating, cooling, mobility, industrial transformation).
+- **Environmental challenge:** Energy systems are the main greenhouse gas (GHG) emitters worldwide.
 
-
-### Energy systems are everywhere
-
-
-### They provide fundamental needs of the life
-
-
-### But, are the main greenhouse gas emitters
-
-
-### 2
-
+![Energy Systems Overview](assets/day_1_intro_tesm_course_image2.png)
 
 ---
 
-## Slide 3
+## 2. Objectives of the Course
 
-### Objectives of the course
+### Core Learning Objectives
+- Master the **working principles** of thermodynamic energy systems.
+- Apply systematic **performance analysis methods**.
+- Perform system **design and component sizing**.
+- Carry out **stationary and dynamic simulation**.
+- Identify potential for **performance improvement via exergy analysis**.
 
-
-### Objectives:
-
-  - Working principle of thermodynamics energy système
-  - Performance analysis methods
-  - System design
-  - Stationary and dynamic simulation
-  - Performance improvement via the exergy analysis
-
-### Cycles to be studied:
-
-  - Refrigeration and heat pumps (HVAC)
-  - Gaz turbine
-  - Water steam cycle
-  - Combined cycles
-  - Cogeneration
-  - + others during the project sessions
-
-### 3
-
+### Thermodynamic Cycles Studied
+1. **Refrigeration and Heat Pumps (HVAC)**
+2. **Gas Turbine (Brayton cycle)**
+3. **Water-Steam Cycle (Rankine / Hirn cycle)**
+4. **Combined Cycles (CCGT)**
+5. **Cogeneration (CHP - Combined Heat and Power)**
+6. Other advanced cycles explored during student project sessions.
 
 ---
 
-## Slide 4
+## 3. Planning & Course Organization
 
-### Planning …
-
-
-### 4
-
+- Mix of lectures, theoretical derivations, numerical exercises, and simulation projects.
+- Hands-on modeling using Python thermodynamic backends (CoolProp, Caldis) and OpenModelica.
 
 ---
 
-## Slide 5
+## 4. Evaluation & Grading Scheme
 
-### Evaluation
+The final evaluation is broken down into three components:
 
-
-### Multiple choice examination (/50):
-
-  - Totally based on the course’s contents
-  - Description of the studied thermodynamics cycles
-  - Comparison between ideal and real cycles
-  - Calculation of system efficiencies
-  - Exergetic analysis
-  - Model development in OpenModelica
-  - The course materials allowed during the examination
-
-### Project (/40):
-
-  - Writing report
-  - Simulation model
-
-### Course attendance (/10):
-
-  - Lectures
-  - Exercise sessions
-
-### 5
-
+| Component | Weight | Visual | Description |
+| :--- | :---: | :---: | :--- |
+| **Multiple Choice Examination** | **/50** | <img src="assets/day_1_intro_tesm_course_image4_cropped.jpeg" alt="Exam Icon" width="90" /> | Platform Moodle, all course materials allowed |
+| **Project** | **/40** | <img src="assets/day_1_intro_tesm_course_image3_cropped.png" alt="Project Icon" width="90" /> | Written report + simulation model |
+| **Course Attendance** | **/10** | <img src="assets/day_1_intro_tesm_course_image5.jpeg" alt="Attendance Icon" width="90" /> | Active presence in lectures and exercise sessions |
 
 ---
 
-## Slide 6
+## 5. Multiple Choice Examination Guidelines
 
-### Multiple choice examination
-
-
-### Exam on the platform Moodle
-
-
-### The course materials allowed
-
-
-### No question about OpenModelica
-
-
-### Evaluation:
-
-  - One question  one point, except clearly specified otherwise
-  - No “penalty” point for a wrong answer
-
-### How to give answers:
-
-  - If a question allows more than one answer choices, it has more than one correct answer
-  - If it is required to provide a numerical value, write at lease 3 significant digits
-  - Both the point “.” and the comma “,” can be used for a decimal sign
-  - You can pass a question, and come back later
-  - Answers can be changed, before the time runs out
-
-### Fluid property calculator: https://irc.wisc.edu/properties/
-
-
-### 6
-
+The final exam is held on the **Moodle** platform with open course materials:
+- **Scope:**
+  - Description of the studied thermodynamic cycles.
+  - Comparison between ideal and real cycles.
+  - Calculation of system efficiencies and balances.
+  - Exergetic analysis.
+  - *Note:* No direct questions testing OpenModelica syntax.
+- **Scoring Rules:**
+  - 1 question = 1 point (unless explicitly stated otherwise).
+  - **No penalty** points for incorrect answers.
+- **Answer Format:**
+  - If a question allows multiple choices, it has more than one correct answer.
+  - For numerical inputs: provide at least **3 significant digits**.
+  - Both decimal point (`.`) and comma (`,`) are accepted as decimal separators.
+  - Questions can be skipped and revisited at any time before the deadline.
+  - Answers can be updated freely until time runs out.
+- **Reference Calculator:**
+  - Recommended online thermodynamic property calculator: [UW-Madison IRC Properties Tool](https://irc.wisc.edu/properties/)
 
 ---
 
-## Slide 7
+## 6. Course Materials & References
 
-### Course materials
-
-
-### Slides
-
-
-### Exercises
-
-
-### Library «  EnergySystems»
-
-
-### And the book Thermodynamics Energy System Modelling
-
-
-###  check the shared folder on Cloud
-
-
-### 7
-
-
----
-
-## Slide 8
-
-### Thank you !
-
-
-### For any questions  cong-toan.tran@mines-paristech.fr
-
-
-### 8
+- Lecture slides (PDF / PPTX)
+- Exercise sheets and correction guides
+- Modelica library: `EnergySystems`
+- Python modeling scripts (`Caldis`, `CoolProp`)
+- Reference textbook: *Thermodynamics Energy System Modelling* (available in the cloud shared folder)
