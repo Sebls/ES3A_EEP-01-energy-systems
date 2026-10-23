@@ -1,0 +1,2390 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Plateforme acausale de modélisation et simulation de systèmes énergétiques">
+      
+      
+        <meta name="author" content="Caldis Team">
+      
+      
+      
+        <link rel="prev" href="../../examples/dynamic_tank/">
+      
+      
+        <link rel="next" href="../components/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Core API - Caldis Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#core-api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Caldis Documentation" class="md-header__button md-logo" aria-label="Caldis Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Caldis Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Core API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Caldis Documentation" class="md-nav__button md-logo" aria-label="Caldis Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Caldis Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture & Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture & Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview & Philosophy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/dof/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Degrees of Freedom (DOF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/sign_conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sign Conventions & Ports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/start_system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start System (Provenance)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Defining Cycles & Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/dynamic_simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dynamic Simulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/exergy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exergy Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Component Library
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Component Library
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/machines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Turbomachinery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/heat_exchangers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Heat Exchangers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/combustion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Combustion & Heaters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/valves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valves & Restrictions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/vessels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vessels & Accumulators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/fittings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Fittings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boundaries & Sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fluids & Thermodynamics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fluids & Thermodynamics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fluids/backends/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fluid Backends
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solvers & Numerical Methods
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Solvers & Numerical Methods
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solvers/steady_and_homotopy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Steady-State & Homotopy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solvers/dynamic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dynamic Integrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solvers/autostart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autostart Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting & Diagnostics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Troubleshooting & Diagnostics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Errors & Fixes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/diagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagnostic Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Complete Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Complete Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/brayton_cycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Brayton Gas Turbine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/heat_pump/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Vapor Compression Heat Pump
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/dynamic_tank/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Dynamic Heated Tank
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core API
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addcomponents-component-tuplecomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add(*components: Component) -&gt; Tuple[Component, ...]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectport_a-fluidport-port_b-fluidport-close_loop-bool-false-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        connect(port_a: FluidPort, port_b: FluidPort, close_loop: bool = False) -&gt; Connection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_constraintfn-callable-float-name-str-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_constraint(fn: Callable[[], float], name: str = "") -&gt; None
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove_constraintname-str-none-replace_constraintname-str-fn-callable-float-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        remove_constraint(name: str) -&gt; None / replace_constraint(name: str, fn: Callable[[], float]) -&gt; None
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assemble-listvariable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assemble() -&gt; List[Variable]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#residuals-npndarray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        residuals() -&gt; np.ndarray
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port_tableas_dataframe-bool-true-unionpddataframe-listdictstr-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        port_table(as_dataframe: bool = True) -&gt; Union[pd.DataFrame, List[Dict[str, Any]]]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_referencet_ref-float-p_ref-float-1013250-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        set_reference(T_ref: float, p_ref: float = 101325.0) -&gt; None
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exergy_reportt0-optionalfloat-none-p0-optionalfloat-none-pddataframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        exergy_report(T0: Optional[float] = None, p0: Optional[float] = None) -&gt; pd.DataFrame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluidport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FluidPort
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FluidPort">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties-accessors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties &amp; Accessors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exergy_flowt0-float-p0-float-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        exergy_flow(T0: float, p0: float) -&gt; float
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Components API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solvers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solvers & Autostart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addcomponents-component-tuplecomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add(*components: Component) -&gt; Tuple[Component, ...]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectport_a-fluidport-port_b-fluidport-close_loop-bool-false-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        connect(port_a: FluidPort, port_b: FluidPort, close_loop: bool = False) -&gt; Connection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_constraintfn-callable-float-name-str-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_constraint(fn: Callable[[], float], name: str = "") -&gt; None
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove_constraintname-str-none-replace_constraintname-str-fn-callable-float-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        remove_constraint(name: str) -&gt; None / replace_constraint(name: str, fn: Callable[[], float]) -&gt; None
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assemble-listvariable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assemble() -&gt; List[Variable]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#residuals-npndarray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        residuals() -&gt; np.ndarray
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port_tableas_dataframe-bool-true-unionpddataframe-listdictstr-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        port_table(as_dataframe: bool = True) -&gt; Union[pd.DataFrame, List[Dict[str, Any]]]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_referencet_ref-float-p_ref-float-1013250-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        set_reference(T_ref: float, p_ref: float = 101325.0) -&gt; None
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exergy_reportt0-optionalfloat-none-p0-optionalfloat-none-pddataframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        exergy_report(T0: Optional[float] = None, p0: Optional[float] = None) -&gt; pd.DataFrame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluidport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FluidPort
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FluidPort">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties-accessors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties &amp; Accessors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exergy_flowt0-float-p0-float-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        exergy_flow(T0: float, p0: float) -&gt; float
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="core-api-reference">Core API Reference<a class="headerlink" href="#core-api-reference" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Document Type: Reference</p>
+<p>Information-oriented technical specification of the foundational topological and structural abstractions in <code>caldis.core</code>.</p>
+</div>
+<hr />
+<h2 id="system"><code>System</code><a class="headerlink" href="#system" title="Permanent link">&para;</a></h2>
+<p>::: caldis.core.system.System
+    handler: python
+    options:
+      show_root_heading: false</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">caldis</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">System</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;system&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>The central container managing components, fluid streams, algebraic constraints, and global unknowns.</p>
+<h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
+<h4 id="addcomponents-component-tuplecomponent"><code>add(*components: Component) -&gt; Tuple[Component, ...]</code><a class="headerlink" href="#addcomponents-component-tuplecomponent" title="Permanent link">&para;</a></h4>
+<p>Registers one or more physical components with the system container.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>*components</code></td>
+<td style="text-align: left;"><code>Component</code></td>
+<td style="text-align: left;">Arbitrary number of component instances (<code>Compressor</code>, <code>FluidBoundary</code>, etc.).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The component or tuple of components registered.</p>
+<hr />
+<h4 id="connectport_a-fluidport-port_b-fluidport-close_loop-bool-false-connection"><code>connect(port_a: FluidPort, port_b: FluidPort, close_loop: bool = False) -&gt; Connection</code><a class="headerlink" href="#connectport_a-fluidport-port_b-fluidport-close_loop-bool-false-connection" title="Permanent link">&para;</a></h4>
+<p>Creates an acausal connection between two fluid ports.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>port_a</code></td>
+<td style="text-align: left;"><code>FluidPort</code></td>
+<td style="text-align: left;"><em>required</em></td>
+<td style="text-align: left;">First fluid port.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>port_b</code></td>
+<td style="text-align: left;"><code>FluidPort</code></td>
+<td style="text-align: left;"><em>required</em></td>
+<td style="text-align: left;">Second fluid port.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>close_loop</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;"><code>False</code></td>
+<td style="text-align: left;">When <code>True</code>, omits the mass balance equation (<span class="arithmatex">\(\dot{m}_a + \dot{m}_b = 0\)</span>) to eliminate linear dependency in closed cycles.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Residuals Generated:</strong>
+- Equality of pressure: <span class="arithmatex">\(p_a - p_b = 0\)</span>
+- Equality of specific enthalpy: <span class="arithmatex">\(h_a - h_b = 0\)</span>
+- Mass conservation (if <code>close_loop=False</code>): <span class="arithmatex">\(\dot{m}_a + \dot{m}_b = 0\)</span></p>
+<hr />
+<h4 id="add_constraintfn-callable-float-name-str-none"><code>add_constraint(fn: Callable[[], float], name: str = "") -&gt; None</code><a class="headerlink" href="#add_constraintfn-callable-float-name-str-none" title="Permanent link">&para;</a></h4>
+<p>Appends a custom scalar constraint equation residual <span class="arithmatex">\(r = f() = 0\)</span> to the system.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>fn</code></td>
+<td style="text-align: left;"><code>Callable[[], float]</code></td>
+<td style="text-align: left;">Zero-argument callable returning the residual scalar.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;"><code>str</code></td>
+<td style="text-align: left;">Optional identifier for logging and diagnostic reports.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="remove_constraintname-str-none-replace_constraintname-str-fn-callable-float-none"><code>remove_constraint(name: str) -&gt; None</code> / <code>replace_constraint(name: str, fn: Callable[[], float]) -&gt; None</code><a class="headerlink" href="#remove_constraintname-str-none-replace_constraintname-str-fn-callable-float-none" title="Permanent link">&para;</a></h4>
+<p>Modifies or replaces an existing system-level constraint by name.</p>
+<hr />
+<h4 id="assemble-listvariable"><code>assemble() -&gt; List[Variable]</code><a class="headerlink" href="#assemble-listvariable" title="Permanent link">&para;</a></h4>
+<p>Collects all unknown variables across all registered components and connections, assigning each variable a global index.</p>
+<p><strong>Returns:</strong> Flat list of unknown <code>Variable</code> instances in the global equation vector.</p>
+<hr />
+<h4 id="residuals-npndarray"><code>residuals() -&gt; np.ndarray</code><a class="headerlink" href="#residuals-npndarray" title="Permanent link">&para;</a></h4>
+<p>Evaluates all component balances, connection equations, and system constraints at current variable values.</p>
+<p><strong>Returns:</strong> <code>np.ndarray</code> 1D array of residuals with length equal to <span class="arithmatex">\(N_{\text{equations}}\)</span>.</p>
+<hr />
+<h4 id="port_tableas_dataframe-bool-true-unionpddataframe-listdictstr-any"><code>port_table(as_dataframe: bool = True) -&gt; Union[pd.DataFrame, List[Dict[str, Any]]]</code><a class="headerlink" href="#port_tableas_dataframe-bool-true-unionpddataframe-listdictstr-any" title="Permanent link">&para;</a></h4>
+<p>Extracts the state of every fluid port in the model.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>as_dataframe</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;"><code>True</code></td>
+<td style="text-align: left;">Returns a Pandas <code>DataFrame</code> if <code>True</code>, else a list of dictionaries.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reported Columns:</strong> <code>port</code>, <code>p_bar</code>, <code>T_C</code>, <code>h_kJkg</code>, <code>s_kJkgK</code>, <code>quality</code>, <code>rho_kgm3</code>, <code>mdot</code>.</p>
+<hr />
+<h4 id="set_referencet_ref-float-p_ref-float-1013250-none"><code>set_reference(T_ref: float, p_ref: float = 101325.0) -&gt; None</code><a class="headerlink" href="#set_referencet_ref-float-p_ref-float-1013250-none" title="Permanent link">&para;</a></h4>
+<p>Sets the environmental dead-state temperature (<span class="arithmatex">\(T_0\)</span>) and pressure (<span class="arithmatex">\(p_0\)</span>) for second-law exergy balances.</p>
+<hr />
+<h4 id="exergy_reportt0-optionalfloat-none-p0-optionalfloat-none-pddataframe"><code>exergy_report(T0: Optional[float] = None, p0: Optional[float] = None) -&gt; pd.DataFrame</code><a class="headerlink" href="#exergy_reportt0-optionalfloat-none-p0-optionalfloat-none-pddataframe" title="Permanent link">&para;</a></h4>
+<p>Computes exergy balances across all components (<span class="arithmatex">\(X_{\text{in}}\)</span>, <span class="arithmatex">\(X_{\text{out}}\)</span>, <span class="arithmatex">\(X_{\text{dest}}\)</span>, <span class="arithmatex">\(\eta_{\text{II}}\)</span>).</p>
+<hr />
+<h2 id="variable"><code>Variable</code><a class="headerlink" href="#variable" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">caldis</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">variable</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">owner</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">local_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">start</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">differential</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">lower</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">upper</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>Represents an unknown scalar variable in the system.</p>
+<h3 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Attribute</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;"><code>str</code></td>
+<td style="text-align: left;">Fully qualified hierarchical identifier (e.g. <code>"comp.out.p"</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>start</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;">Initial numerical guess for iterative solvers.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;">Current evaluation value.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>der</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;">Derivative <span class="arithmatex">\(\dot{x} = \frac{dx}{dt}\)</span> (when <code>differential=True</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lower</code></td>
+<td style="text-align: left;"><code>Optional[float]</code></td>
+<td style="text-align: left;">Lower bound constraint during solving.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>upper</code></td>
+<td style="text-align: left;"><code>Optional[float]</code></td>
+<td style="text-align: left;">Upper bound constraint during solving.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scale</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;">Characteristic magnitude for residual and Jacobian normalization.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="fluidport"><code>FluidPort</code><a class="headerlink" href="#fluidport" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">caldis</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">FluidPort</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span> <span class="n">Component</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Interface node representing a thermodynamic fluid stream passing into or out of a component.</p>
+<h3 id="properties-accessors">Properties &amp; Accessors<a class="headerlink" href="#properties-accessors" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Units</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>p</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(\text{Pa}\)</span></td>
+<td style="text-align: left;">Static pressure (backed by unknown <code>Variable</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>h</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(\text{J/kg}\)</span></td>
+<td style="text-align: left;">Specific enthalpy (backed by unknown <code>Variable</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mdot</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(\text{kg/s}\)</span></td>
+<td style="text-align: left;">Mass flow rate (backed by unknown <code>Variable</code>). Inflow <span class="arithmatex">\(&gt;0\)</span>, outflow <span class="arithmatex">\(&lt;0\)</span>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>T</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(\text{K}\)</span></td>
+<td style="text-align: left;">Temperature evaluated via <code>backend.T(p, h)</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>s</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(\text{J/kg/K}\)</span></td>
+<td style="text-align: left;">Specific entropy evaluated via <code>backend.s(p, h)</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rho</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(\text{kg/m}^3\)</span></td>
+<td style="text-align: left;">Density evaluated via <code>backend.rho(p, h)</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>quality</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(-\)</span></td>
+<td style="text-align: left;">Vapor quality <span class="arithmatex">\(x \in [0, 1]\)</span> (subcooled: <code>-1.0</code>, superheated: <code>2.0</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>backend</code></td>
+<td style="text-align: left;"><code>FluidBackend</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(-\)</span></td>
+<td style="text-align: left;">Attached thermophysical equation of state backend.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h3>
+<h4 id="exergy_flowt0-float-p0-float-float"><code>exergy_flow(T0: float, p0: float) -&gt; float</code><a class="headerlink" href="#exergy_flowt0-float-p0-float-float" title="Permanent link">&para;</a></h4>
+<p>Calculates the total flow exergy rate <span class="arithmatex">\(\dot{X} = |\dot{m}| \cdot e_{\text{flow}}\)</span> in Watts (<span class="arithmatex">\(\text{W}\)</span>).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

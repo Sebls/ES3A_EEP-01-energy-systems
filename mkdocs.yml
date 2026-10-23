@@ -1,0 +1,97 @@
+site_name: Caldis Documentation
+site_description: Plateforme acausale de modélisation et simulation de systèmes énergétiques
+site_author: Caldis Team
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Architecture & Concepts:
+      - Overview & Philosophy: architecture/overview.md
+      - Degrees of Freedom (DOF): architecture/dof.md
+      - Sign Conventions & Ports: architecture/sign_conventions.md
+      - Start System (Provenance): architecture/start_system.md
+  - User Guide:
+      - Getting Started: guide/getting_started.md
+      - Defining Cycles & Loops: guide/loops.md
+      - Dynamic Simulation: guide/dynamic_simulation.md
+      - Exergy Analysis: guide/exergy.md
+  - Component Library:
+      - Overview: components/index.md
+      - Turbomachinery: components/machines.md
+      - Heat Exchangers: components/heat_exchangers.md
+      - Combustion & Heaters: components/combustion.md
+      - Valves & Restrictions: components/valves.md
+      - Vessels & Accumulators: components/vessels.md
+      - Network Fittings: components/fittings.md
+      - Boundaries & Sources: components/sources.md
+  - Fluids & Thermodynamics:
+      - Fluid Backends: fluids/backends.md
+  - Solvers & Numerical Methods:
+      - Steady-State & Homotopy: solvers/steady_and_homotopy.md
+      - Dynamic Integrator: solvers/dynamic.md
+      - Autostart Engine: solvers/autostart.md
+  - Troubleshooting & Diagnostics:
+      - Common Errors & Fixes: troubleshooting/errors.md
+      - Diagnostic Tools: troubleshooting/diagnostics.md
+  - Complete Examples:
+      - 01 Brayton Gas Turbine: examples/brayton_cycle.md
+      - 02 Vapor Compression Heat Pump: examples/heat_pump.md
+      - 03 Dynamic Heated Tank: examples/dynamic_tank.md
+  - API Reference:
+      - Core API: api/core.md
+      - Components API: api/components.md
+      - Solvers & Autostart: api/solvers.md
