@@ -1,44 +1,66 @@
 # Turbomachinery: Compressor & Turbine
 
-Turbomachinery components model fluid work interactions with constant isentropic efficiencies.
+Turbomachinery components model fluid work interactions with constant isentropic and mechanical efficiencies.
 
 ---
 
 ## Compressor
 
-`caldis.components.machines.compressor.Compressor` models an adiabatic compressor.
+`caldis.components.machines.compressor.Compressor` models a steady-state adiabatic compressor.
 
-### Physics
-**Mass balance**:
+### Constructor & Parameters
 
-$$\dot{m}_{\text{inl}} + \dot{m}_{\text{out}} = 0$$
-
-**Isentropic enthalpy rise**:
-
-$$s_{\text{in}} = s(p_{\text{in}}, h_{\text{in}})$$
-
-$$h_{\text{out}, s} = h(p_{\text{out}}, s_{\text{in}})$$
-
-$$h_{\text{out}} = h_{\text{in}} + \frac{h_{\text{out}, s} - h_{\text{in}}}{\eta_{\text{is}}}$$
-
-### Constructor Arguments
 ```python
 Compressor(name, backend, eta_is)
 ```
-- `name` (*str*): Unique component name.
-- `backend` (*FluidBackend*): Fluid property backend.
-- `eta_is` (*float*): Isentropic efficiency ($0 < \eta_{\text{is}} \le 1$).
+
+| Parameter | Type | Default | Units | Description & Constraints |
+| :--- | :--- | :--- | :--- | :--- |
+| `name` | `str` | *required* | — | Unique identifier string for the component. |
+| `backend` | `FluidBackend` | *required* | — | Fluid thermodynamic properties backend. |
+| `eta_is` | `float` | *required* | — | Isentropic efficiency ($0 < \eta_{\text{is}} \le 1$). Divides the isentropic enthalpy rise. |
 
 ### Ports
-- `inl`: Suction port (`FluidPort`).
-- `out`: Discharge port (`FluidPort`).
 
-### Outputs (Post-Solve)
-- `comp.Wdot`: Shaft work absorbed in Watts ($\dot{W} < 0$).
-- `comp.pressure_ratio`: Discharge to suction pressure ratio ($p_{\text{out}} / p_{\text{in}}$).
+| Port Name | Direction | Type | Description |
+| :--- | :--- | :--- | :--- |
+| `inl` | Inlet | `FluidPort` | Fluid suction / inlet port. |
+| `out` | Outlet | `FluidPort` | Fluid discharge / outlet port. |
 
-### Start Sanity Checks
-- Verifies that $p_{\text{out}} > p_{\text{in}}$ (warns if start pressure indicates expansion).
+### Governing Equations & Residuals
+
+The component contributes 2 non-linear algebraic residuals (`residuals()`):
+
+1. **Mass conservation (`"mass"`)**:
+   $$\dot{m}_{\text{inl}} + \dot{m}_{\text{out}} = 0$$
+2. **Isentropic compression relation (`"isentropic"`)**:
+   $$h_{\text{out}} - \left( h_{\text{inl}} + \frac{h_{\text{out}, s} - h_{\text{inl}}}{\eta_{\text{is}}} \right) = 0$$
+
+where:
+- $s_{\text{inl}} = s(p_{\text{inl}}, h_{\text{inl}})$
+- $h_{\text{out}, s} = h(p_{\text{out}}, s_{\text{inl}})$ evaluated via `backend.h_ps(self.out.p, s_in)`.
+
+### Post-Solve Outputs & Properties
+
+Updated upon solver convergence via `update_outputs()`:
+
+| Property | Symbol | Type / Units | Description |
+| :--- | :--- | :--- | :--- |
+| `comp.Wdot` | $\dot{W}$ | `float` ($\text{W}$) | Shaft power absorbed by the compressor. Follows thermodynamic sign convention ($\dot{W} < 0$ for work done on fluid): $\dot{W} = -\dot{m}_{\text{inl}} (h_{\text{out}} - h_{\text{inl}})$. |
+| `comp.pressure_ratio` | $\Pi$ | `float` | Pressure ratio: $p_{\text{out}} / p_{\text{inl}}$. |
+
+### Exergy Balance
+
+Evaluated via `comp.exergy_balance(T0, p0)`:
+$$\dot{X}_{\text{in}} = \dot{m}_{\text{inl}} \cdot e_{x}(p_{\text{inl}}, h_{\text{inl}}; T_0, p_0)$$
+$$\dot{X}_{\text{out}} = \dot{m}_{\text{out}} \cdot e_{x}(p_{\text{out}}, h_{\text{out}}; T_0, p_0)$$
+$$\dot{W}_{\text{absorbed}} = |\dot{m}_{\text{inl}} (h_{\text{out}} - h_{\text{inl}})|$$
+$$\dot{X}_{\text{dest}} = \dot{W}_{\text{absorbed}} - (\dot{X}_{\text{out}} - \dot{X}_{\text{in}})$$
+
+### Pre-Solve Sanity Checks (`_own_start_sanity`)
+
+Prior to system solving, `Compressor` validates:
+- **Pressure Gradient**: $p_{\text{out}} > p_{\text{inl}}$. Warns or fails if initial conditions specify expansion through the compressor.
 
 ---
 
@@ -46,40 +68,64 @@ Compressor(name, backend, eta_is)
 
 `caldis.components.machines.turbine.Turbine` models an adiabatic expansion turbine.
 
-### Physics
-**Mass balance**:
+### Constructor & Parameters
 
-$$\dot{m}_{\text{inl}} + \dot{m}_{\text{out}} = 0$$
-
-**Isentropic enthalpy drop**:
-
-$$s_{\text{in}} = s(p_{\text{in}}, h_{\text{in}})$$
-
-$$h_{\text{out}, s} = h(p_{\text{out}}, s_{\text{in}})$$
-
-$$h_{\text{out}} = h_{\text{in}} - \eta_{\text{is}} \cdot (h_{\text{in}} - h_{\text{out}, s})$$
-
-### Constructor Arguments
 ```python
 Turbine(name, backend, eta_is=0.89, eta_mech=1.0)
 ```
-- `name` (*str*): Unique component name.
-- `backend` (*FluidBackend*): Fluid property backend.
-- `eta_is` (*float*): Isentropic expansion efficiency. Default is `0.89`.
-- `eta_mech` (*float*): Mechanical shaft efficiency. Default is `1.0`.
+
+| Parameter | Type | Default | Units | Description & Constraints |
+| :--- | :--- | :--- | :--- | :--- |
+| `name` | `str` | *required* | — | Unique identifier string for the component. |
+| `backend` | `FluidBackend` | *required* | — | Fluid thermodynamic properties backend. |
+| `eta_is` | `float` | `0.89` | — | Isentropic expansion efficiency ($0 < \eta_{\text{is}} \le 1$). Multiplies the isentropic drop. |
+| `eta_mech` | `float` | `1.0` | — | Mechanical shaft efficiency ($0 < \eta_{\text{mech}} \le 1$). Accounts for mechanical bearing/windage losses in delivered shaft power. |
 
 ### Ports
-- `inl`: Expansion inlet port (`FluidPort`).
-- `out`: Expansion exhaust port (`FluidPort`).
 
-### Outputs (Post-Solve)
-- `turb.Wdot`: Net shaft power delivered in Watts ($\dot{W} > 0$).
-- `turb.Wdot_is`: Ideal isentropic shaft power.
-- `turb.pressure_ratio`: Expansion ratio ($p_{\text{in}} / p_{\text{out}}$).
-- `turb.T_out_s`: Isentropic exhaust temperature ($K$).
+| Port Name | Direction | Type | Description |
+| :--- | :--- | :--- | :--- |
+| `inl` | Inlet | `FluidPort` | High-pressure turbine inlet / admission port. |
+| `out` | Outlet | `FluidPort` | Low-pressure turbine exhaust port. |
 
-### Start Sanity Checks
-- Verifies $p_{\text{out}} < p_{\text{in}}$.
-- Verifies $\dot{m}_{\text{in}} > 0$.
-- Warns if $T_{\text{in}} < 500\text{ K}$ for gas turbines to catch forgotten thermal starts.
+### Governing Equations & Residuals
+
+The component contributes 2 non-linear algebraic residuals (`residuals()`):
+
+1. **Mass conservation (`"mass"`)**:
+   $$\dot{m}_{\text{inl}} + \dot{m}_{\text{out}} = 0$$
+2. **Expansion enthalpy equation (`"isentropic"`)**:
+   $$h_{\text{out}} - \left[ h_{\text{inl}} - \eta_{\text{is}} \cdot (h_{\text{inl}} - h_{\text{out}, s}) \right] = 0$$
+
+where:
+- $s_{\text{inl}} = s(p_{\text{inl}}, h_{\text{inl}})$
+- $h_{\text{out}, s} = h(p_{\text{out}}, s_{\text{inl}})$ evaluated via `backend.h_ps(self.out.p, s_in)`.
+
+### Post-Solve Outputs & Properties
+
+Updated upon solver convergence via `update_outputs()`:
+
+| Property | Symbol | Type / Units | Description |
+| :--- | :--- | :--- | :--- |
+| `turb.Wdot` | $\dot{W}$ | `float` ($\text{W}$) | Net mechanical shaft power delivered ($\dot{W} > 0$): $\dot{W} = \eta_{\text{mech}} \cdot \dot{m}_{\text{inl}} (h_{\text{inl}} - h_{\text{out}})$. |
+| `turb.Wdot_is` | $\dot{W}_{\text{is}}$ | `float` ($\text{W}$) | Maximum theoretical isentropic shaft power: $\dot{W}_{\text{is}} = \eta_{\text{mech}} \cdot \dot{m}_{\text{inl}} (h_{\text{inl}} - h_{\text{out}, s})$. |
+| `turb.pressure_ratio` | $\Pi$ | `float` | Expansion pressure ratio: $p_{\text{inl}} / p_{\text{out}}$. |
+| `turb.h_out_s` | $h_{\text{out}, s}$ | `float` ($\text{J/kg}$) | Ideal isentropic discharge specific enthalpy. |
+| `turb.T_out_s` | $T_{\text{out}, s}$ | `float` ($\text{K}$) | Ideal isentropic discharge temperature: $T(p_{\text{out}}, h_{\text{out}, s})$. |
+
+### Exergy Balance
+
+Evaluated via `turb.exergy_balance(T0, p0)`:
+$$\dot{X}_{\text{in}} = \dot{m}_{\text{inl}} \cdot e_{x}(p_{\text{inl}}, h_{\text{inl}}; T_0, p_0)$$
+$$\dot{X}_{\text{out}} = \dot{m}_{\text{out}} \cdot e_{x}(p_{\text{out}}, h_{\text{out}}; T_0, p_0)$$
+$$\dot{W}_{\text{shaft}} = \eta_{\text{mech}} \cdot \dot{m}_{\text{inl}} (h_{\text{inl}} - h_{\text{out}})$$
+$$\dot{X}_{\text{dest}} = (\dot{X}_{\text{in}} - \dot{X}_{\text{out}}) - \dot{W}_{\text{shaft}}$$
+
+### Pre-Solve Sanity Checks (`_own_start_sanity`)
+
+Validates turbine start conditions before solving:
+- **Pressure drop direction**: $p_{\text{out}} < p_{\text{inl}}$ (expansion requirement).
+- **Inlet mass flow**: $\dot{m}_{\text{inl}} > 0$.
+- **High temperature check**: $T_{\text{inl}} > 500\text{ K}$ (warns if start state seems too cold for high-temperature turbines).
+
 

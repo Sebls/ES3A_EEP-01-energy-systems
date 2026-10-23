@@ -839,57 +839,96 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#operating-modes" class="md-nav__link">
+  <a href="#valve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Operating Modes
+        Valve
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Valve">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constructor &amp; Parameters
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#flow-laws" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#operating-modes-unknowns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Flow Laws
+        Operating Modes &amp; Unknowns
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#constructor-arguments" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#ports" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Constructor Arguments
+        Ports
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#ports-outputs" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#governing-equations-residuals" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ports &amp; Outputs
+        Governing Equations &amp; Residuals
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#start-sanity-check" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#post-solve-outputs-properties" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Start Sanity Check
+        Post-Solve Outputs &amp; Properties
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exergy-balance-dissipation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exergy Balance &amp; Dissipation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-solve-sanity-checks-_own_start_sanity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Solve Sanity Checks (_own_start_sanity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1516,57 +1555,96 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#operating-modes" class="md-nav__link">
+  <a href="#valve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Operating Modes
+        Valve
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Valve">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constructor &amp; Parameters
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#flow-laws" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#operating-modes-unknowns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Flow Laws
+        Operating Modes &amp; Unknowns
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#constructor-arguments" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#ports" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Constructor Arguments
+        Ports
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#ports-outputs" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#governing-equations-residuals" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ports &amp; Outputs
+        Governing Equations &amp; Residuals
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#start-sanity-check" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#post-solve-outputs-properties" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Start Sanity Check
+        Post-Solve Outputs &amp; Properties
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exergy-balance-dissipation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exergy Balance &amp; Dissipation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-solve-sanity-checks-_own_start_sanity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Solve Sanity Checks (_own_start_sanity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1588,47 +1666,148 @@
 
 
 <h1 id="valves-pressure-restrictions">Valves &amp; Pressure Restrictions<a class="headerlink" href="#valves-pressure-restrictions" title="Permanent link">&para;</a></h1>
-<p><code>caldis.components.valves.valve.Valve</code> models an adiabatic, isenthalpic expansion valve or hydraulic restriction.</p>
+<p><code>caldis.components.valves.valve.Valve</code> models an adiabatic, isenthalpic expansion valve, throttle, or hydraulic flow restriction.</p>
 <hr />
-<h2 id="operating-modes">Operating Modes<a class="headerlink" href="#operating-modes" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p><strong>Simulation Mode (<code>Kv</code> provided)</strong>:
-   The flow coefficient <span class="arithmatex">\(K_v\)</span> is fixed. Mass flow rate is determined by the pressure drop:</p>
-<div class="arithmatex">\[\dot{m} = f(\Delta p, K_v)\]</div>
-</li>
-<li>
-<p><strong>Sizing Mode (<code>Kv=None</code>)</strong>:
-   <span class="arithmatex">\(K_v\)</span> is treated as an unknown <code>Variable</code> (<span class="arithmatex">\(K_v \ge 0\)</span>). The system must impose flow or pressure conditions to determine the required valve size.</p>
-</li>
-</ol>
-<hr />
-<h2 id="flow-laws">Flow Laws<a class="headerlink" href="#flow-laws" title="Permanent link">&para;</a></h2>
-<p><strong><em>*Quadratic (<code>flow_law="quadratic"</code>)</em>*: Standard orifice equation</strong>:</p>
-<div class="arithmatex">\[\dot{m} = K_v \cdot \text{sgn}(\Delta p) \sqrt{|\Delta p| + \varepsilon}\]</div>
-<p><strong><em>*Linear (<code>flow_law="linear"</code>)</em>*: Smoothed laminar law used to improve solver convergence during difficult initializations</strong>:</p>
-<div class="arithmatex">\[\dot{m} = K_v \cdot \Delta p\]</div>
-<hr />
-<h2 id="constructor-arguments">Constructor Arguments<a class="headerlink" href="#constructor-arguments" title="Permanent link">&para;</a></h2>
-<p><div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Valve</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Kv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flow_law</span><span class="o">=</span><span class="s2">&quot;quadratic&quot;</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+<h2 id="valve">Valve<a class="headerlink" href="#valve" title="Permanent link">&para;</a></h2>
+<p>Models flow rate as a function of differential pressure <span class="arithmatex">\(\Delta p = p_{\text{inl}} - p_{\text{out}}\)</span> with isenthalpic expansion (<span class="arithmatex">\(h_{\text{out}} = h_{\text{inl}}\)</span>).</p>
+<h3 id="constructor-parameters">Constructor &amp; Parameters<a class="headerlink" href="#constructor-parameters" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Valve</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">Kv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flow_law</span><span class="o">=</span><span class="s2">&quot;quadratic&quot;</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
 </span></code></pre></div>
-- <code>name</code> (<em>str</em>): Unique component name.
-- <code>Kv</code> (<em>float or None</em>): Flow coefficient. If <code>None</code>, sizing mode is activated.
-- <code>backend</code> (<em>FluidBackend</em>): Optional fluid backend.
-- <code>flow_law</code> (<em>str</em>): <code>"quadratic"</code> or <code>"linear"</code>.
-- <code>eps</code> (<em>float</em>): Regularization parameter preventing infinite derivatives at <span class="arithmatex">\(\Delta p = 0\)</span>.</p>
-<hr />
-<h2 id="ports-outputs">Ports &amp; Outputs<a class="headerlink" href="#ports-outputs" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Units</th>
+<th style="text-align: left;">Description &amp; Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;"><code>str</code></td>
+<td style="text-align: left;"><em>required</em></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Component identifier string.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Kv</code></td>
+<td style="text-align: left;"><code>float</code> or <code>None</code></td>
+<td style="text-align: left;"><code>None</code></td>
+<td style="text-align: left;">Law-dependent</td>
+<td style="text-align: left;">Valve flow conductance coefficient. If <code>float</code>, fixed simulation mode is used. If <code>None</code>, valve sizing mode is triggered.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>backend</code></td>
+<td style="text-align: left;"><code>FluidBackend</code> or <code>None</code></td>
+<td style="text-align: left;"><code>None</code></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Optional fluid thermodynamic backend.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>flow_law</code></td>
+<td style="text-align: left;"><code>str</code></td>
+<td style="text-align: left;"><code>"quadratic"</code></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Flow regime law: <code>"quadratic"</code> or <code>"linear"</code>. Raises <code>ValueError</code> for any other value.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>eps</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;"><code>1e-9</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(\text{Pa}\)</span></td>
+<td style="text-align: left;">Smoothing regularization parameter avoiding singular Jacobians at zero pressure drop (<span class="arithmatex">\(\Delta p \to 0\)</span>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="operating-modes-unknowns">Operating Modes &amp; Unknowns<a class="headerlink" href="#operating-modes-unknowns" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Ports: <code>inl</code>, <code>out</code>.</li>
-<li>Outputs:</li>
-<li><code>valve.Kv</code>: Value of <span class="arithmatex">\(K_v\)</span> (parameter or solved unknown).</li>
-<li><code>valve.dp</code>: Pressure drop <span class="arithmatex">\(p_{\text{inl}} - p_{\text{out}}\)</span>.</li>
+<li><strong>Simulation Mode (<code>Kv</code> given as a number)</strong>:</li>
+<li><span class="arithmatex">\(K_v\)</span> is saved in <code>params["Kv"]</code>.</li>
+<li>The mass flow rate is determined algebraically by the imposed pressure drop across the component.</li>
+<li><strong>Sizing Mode (<code>Kv=None</code>)</strong>:</li>
+<li>Sets <code>self.sizing = True</code> and instantiates an internal unknown <code>Variable</code>:
+    $<span class="arithmatex">\(\text{self.\_Kv\_var} = \text{Variable}("Kv", \text{start}=10^{-4}, \text{lower}=0.0, \text{scale}=10^{-4})\)</span>$</li>
+<li>The system must provide a closing equation elsewhere (such as fixing stream mass flow rate or outlet pressure) to calculate the required valve opening.</li>
 </ul>
-<hr />
-<h2 id="start-sanity-check">Start Sanity Check<a class="headerlink" href="#start-sanity-check" title="Permanent link">&para;</a></h2>
+<h3 id="ports">Ports<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Port Name</th>
+<th style="text-align: left;">Direction</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>inl</code></td>
+<td style="text-align: left;">Inlet</td>
+<td style="text-align: left;"><code>FluidPort</code></td>
+<td style="text-align: left;">Upstream high-pressure entry port.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>out</code></td>
+<td style="text-align: left;">Outlet</td>
+<td style="text-align: left;"><code>FluidPort</code></td>
+<td style="text-align: left;">Downstream throttled discharge port.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="governing-equations-residuals">Governing Equations &amp; Residuals<a class="headerlink" href="#governing-equations-residuals" title="Permanent link">&para;</a></h3>
+<p>The component contributes 3 non-linear residuals (<code>residuals()</code>):</p>
+<ol>
+<li><strong>Mass conservation (<code>"mass"</code>)</strong>:
+   $<span class="arithmatex">\(\dot{m}_{\text{inl}} + \dot{m}_{\text{out}} = 0\)</span>$</li>
+<li><strong>Hydraulic flow law (<code>"flow_law"</code>)</strong>:
+   $<span class="arithmatex">\(\dot{m}_{\text{inl}} - \dot{m}_{\text{law}} = 0\)</span>$
+   where <span class="arithmatex">\(\dot{m}_{\text{law}}\)</span> depends on <code>flow_law</code>:</li>
+<li><strong><code>"quadratic"</code></strong> (Turbulent orifice flow):
+     $<span class="arithmatex">\(\dot{m}_{\text{law}} = K_v \cdot \text{sgn}(\Delta p) \sqrt{|\Delta p| + \varepsilon}\)</span>$
+     Units of <span class="arithmatex">\(K_v\)</span>: <span class="arithmatex">\(\text{kg} \cdot \text{s}^{-1} \cdot \text{Pa}^{-0.5}\)</span>.</li>
+<li><strong><code>"linear"</code></strong> (Laminar / smoothed flow for stiff initializations):
+     $<span class="arithmatex">\(\dot{m}_{\text{law}} = K_v \cdot \Delta p\)</span>$
+     Units of <span class="arithmatex">\(K_v\)</span>: <span class="arithmatex">\(\text{kg} \cdot \text{s}^{-1} \cdot \text{Pa}^{-1}\)</span>.</li>
+<li><strong>Isenthalpic expansion (<code>"isenthalpic"</code>)</strong>:
+   $<span class="arithmatex">\(h_{\text{out}} - h_{\text{inl}} = 0\)</span>$</li>
+</ol>
+<h3 id="post-solve-outputs-properties">Post-Solve Outputs &amp; Properties<a class="headerlink" href="#post-solve-outputs-properties" title="Permanent link">&para;</a></h3>
+<p>Updated upon solver convergence via <code>update_outputs()</code>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Symbol</th>
+<th style="text-align: left;">Type / Units</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>valve.Kv</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(K_v\)</span></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;">Conductance coefficient (either parameter value or solved unknown).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>valve.dp</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(\Delta p\)</span></td>
+<td style="text-align: left;"><code>float</code> (<span class="arithmatex">\(\text{Pa}\)</span>)</td>
+<td style="text-align: left;">Differential pressure drop: <span class="arithmatex">\(p_{\text{inl}} - p_{\text{out}}\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exergy-balance-dissipation">Exergy Balance &amp; Dissipation<a class="headerlink" href="#exergy-balance-dissipation" title="Permanent link">&para;</a></h3>
+<p>Evaluated via <code>valve.exergy_balance(T0, p0)</code>:
+Throttling is an unrecoverable, purely dissipative process:
+$<span class="arithmatex">\(\dot{S}_{\text{gen}} = \dot{m}_{\text{inl}} (s_{\text{out}} - s_{\text{inl}})\)</span>$
+$<span class="arithmatex">\(\dot{X}_{\text{dest}} = T_0 \dot{S}_{\text{gen}}\)</span>$
+$<span class="arithmatex">\(\dot{X}_{\text{supplied}} = \dot{X}_{\text{dest}}, \quad \dot{X}_{\text{recovered}} = 0.0\)</span>$</p>
+<h3 id="pre-solve-sanity-checks-_own_start_sanity">Pre-Solve Sanity Checks (<code>_own_start_sanity</code>)<a class="headerlink" href="#pre-solve-sanity-checks-_own_start_sanity" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Verifies that <span class="arithmatex">\(p_{\text{inl}} \ge p_{\text{out}}\)</span> (warns if start state exhibits reverse pressure gradient).</li>
+<li>Validates flow direction impedance: <span class="arithmatex">\(p_{\text{inl}} \ge p_{\text{out}}\)</span> (warns if start state specifies negative pressure drop across the valve).</li>
 </ul>
 
 
