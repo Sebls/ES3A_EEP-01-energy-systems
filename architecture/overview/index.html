@@ -1775,32 +1775,7 @@
 <li><strong>Global System Assembly</strong>: The system aggregates all component variables into a single state vector <span class="arithmatex">\(x \in \mathbb{R}^n\)</span> and gathers all physical and topological residuals into <span class="arithmatex">\(F(x) \in \mathbb{R}^m\)</span>.</li>
 <li><strong>Multi-Stage Preflight</strong>: Prior to invoking nonlinear solvers, the system runs explicit degree-of-freedom checking, evaluability checks, and physical sanity bounds.</li>
 </ol>
-<pre class="mermaid"><code>graph TD
-    subgraph Components
-        C1[FluidBoundary]
-        C2[Compressor]
-        C3[HeatExchanger]
-        C4[Turbine]
-    end
-
-    subgraph "System Assembly"
-        S[System Instance]
-        C1 --&gt;|Variables &amp; Residuals| S
-        C2 --&gt;|Variables &amp; Residuals| S
-        C3 --&gt;|Variables &amp; Residuals| S
-        C4 --&gt;|Variables &amp; Residuals| S
-        CONN["Connections a &amp;lt;-&amp;gt; b"] --&gt;|Equality Residuals| S
-        CONST[System Constraints] --&gt;|Design Residuals| S
-    end
-
-    subgraph "Preflight &amp; Solvers"
-        S --&gt; DOF["DOF Preflight: dim(x) == dim(F)?"]
-        DOF --&gt; SAN[Start-Point Evaluability &amp; Sanity]
-        SAN --&gt; NEWT[Direct Damped Newton]
-        NEWT --&gt;|Fallback if needed| HOMO[Homotopy Continuation]
-        NEWT --&gt; RES["Solved State x*"]
-        HOMO --&gt; RES
-    end</code></pre>
+<p><img alt="Caldis Architecture &amp; System Assembly Flow" src="../../assets/architecture-overview.svg" /></p>
 <hr />
 <h2 id="the-core-data-model">The Core Data Model<a class="headerlink" href="#the-core-data-model" title="Permanent link">&para;</a></h2>
 <h3 id="1-variables-variable">1. Variables (<code>Variable</code>)<a class="headerlink" href="#1-variables-variable" title="Permanent link">&para;</a></h3>
@@ -1890,6 +1865,10 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

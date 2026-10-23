@@ -1812,14 +1812,7 @@
 <hr />
 <h2 id="the-preflight-mechanism">The Preflight Mechanism<a class="headerlink" href="#the-preflight-mechanism" title="Permanent link">&para;</a></h2>
 <p>Before running any Newton iteration or homotopy continuation, <code>solve(sys)</code> and <code>simulate(sys)</code> run <code>preflight(sys)</code>.</p>
-<pre class="mermaid"><code>flowchart TD
-    A[Assemble System] --&gt; B[check_dof]
-    B --&gt;|n_unknowns != n_equations| C[DOFReport Error: STOP]
-    B --&gt;|Square: n_unknowns == n_equations| D[check_startpoint]
-    D --&gt;|Non-finite residual / CoolProp crash| E[Start Point Evaluability Error: STOP]
-    D --&gt;|Evaluables finite| F[check_start_sanity]
-    F --&gt;|Warnings: Unphysical starts| G[Display Non-blocking Warnings]
-    F --&gt;|Clean| H[Enter Solvers]</code></pre>
+<p><img alt="Degrees of Freedom &amp; Preflight Validation Pipeline" src="../../assets/dof-preflight.svg" /></p>
 <h3 id="1-counting-rule">1. Counting Rule<a class="headerlink" href="#1-counting-rule" title="Permanent link">&para;</a></h3>
 <p>For a system with components <span class="arithmatex">\(C\)</span>, connections <span class="arithmatex">\(K\)</span>, and system constraints <span class="arithmatex">\(S\)</span>:</p>
 <div class="arithmatex">\[\text{DOF} = N_{\text{unknowns}} - N_{\text{equations}}\]</div>
@@ -1941,6 +1934,10 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

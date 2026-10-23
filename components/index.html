@@ -1787,13 +1787,7 @@
 <hr />
 <h2 id="common-component-attributes-lifecycle">Common Component Attributes &amp; Lifecycle<a class="headerlink" href="#common-component-attributes-lifecycle" title="Permanent link">&para;</a></h2>
 <p>Every component inherits from <code>caldis.core.component.Component</code> and participates in the system lifecycle:</p>
-<pre class="mermaid"><code>graph LR
-    INIT["__init__"] --&gt; PORTS["add_port / add_variable"]
-    PORTS --&gt; RES[residuals]
-    RES --&gt; SANITY[start_sanity]
-    SANITY --&gt; SOLVE[Nonlinear Solver]
-    SOLVE --&gt; OUTPUTS[update_outputs]
-    OUTPUTS --&gt; EXERGY[exergy_balance]</code></pre>
+<p><img alt="Component Architecture &amp; System Lifecycle" src="../assets/component-lifecycle.svg" /></p>
 <ul>
 <li><strong><code>ports</code></strong>: List of attached <code>FluidPort</code> instances.</li>
 <li><strong><code>all_variables()</code></strong>: All internal scalar variables plus port variables.</li>
@@ -1863,6 +1857,10 @@
     
     
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

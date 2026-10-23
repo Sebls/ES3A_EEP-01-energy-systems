@@ -1818,14 +1818,7 @@
 <hr />
 <h2 id="how-autostart-propagation-works">How Autostart Propagation Works<a class="headerlink" href="#how-autostart-propagation-works" title="Permanent link">&para;</a></h2>
 <p><code>autostart(sys, verbose=False)</code> executes a fixpoint loop over direction-agnostic rules until no more variables can be updated:</p>
-<pre class="mermaid"><code>graph TD
-    A[Level 1: Boundary &amp; fix_port] --&gt; B[Priority Queue of Rules]
-    B --&gt; C{Rule matches?}
-    C --&gt;|Inputs known &amp; Target is DEFAULT| D[Compute Target .start]
-    D --&gt; E[Set Target Provenance = PROPAGATED]
-    E --&gt; B
-    C --&gt;|No more rules fire| F[Level 3: Component Internal Seeding]
-    F --&gt; G[System Ready to Solve]</code></pre>
+<p><img alt="Autostart Propagation &amp; Fixpoint Engine" src="../../assets/autostart-propagation.svg" /></p>
 <h3 id="propagation-rules">Propagation Rules<a class="headerlink" href="#propagation-rules" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Connections</strong>:</li>
@@ -1917,6 +1910,10 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

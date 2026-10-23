@@ -1762,16 +1762,7 @@
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">)</span>
 </span></code></pre></div>
 <h3 id="execution-pipeline">Execution Pipeline<a class="headerlink" href="#execution-pipeline" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>flowchart TD
-    A[Start solve] --&gt; B[preflight: DOF + Start Check]
-    B --&gt;|Passed| C{try_newton_first?}
-    C --&gt;|Yes| D[Global Damped Newton from x0]
-    D --&gt;|Converged| E[Check Physical Validity]
-    D --&gt;|Failed / Diverged| F[Homotopy Continuation Fallback]
-    C --&gt;|No| F
-    F --&gt;|Converged| E
-    F --&gt;|Failed| G[Run Diagnostics &amp; SVD Report]
-    E --&gt;|Valid| H[Update Component Outputs &amp; Return sol]</code></pre>
+<p><img alt="Solver Execution Pipeline: Damped Newton and Homotopy Continuation" src="../../assets/solver-pipeline.svg" /></p>
 <hr />
 <h2 id="1-damped-global-newton-newton">1. Damped Global Newton (<code>newton</code>)<a class="headerlink" href="#1-damped-global-newton-newton" title="Permanent link">&para;</a></h2>
 <p>The direct solver uses a bounded, scaled damped Newton algorithm:
@@ -1856,6 +1847,10 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
