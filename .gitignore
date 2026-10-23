@@ -2,3 +2,11 @@
 *.swp
 *~
 *.pdf
+
+# Local proprietary & course material (kept locally, excluded from git/remote)
+/slides/
+/sources/
+/examples/
+/contents/
+/notes/
+/scripts/
