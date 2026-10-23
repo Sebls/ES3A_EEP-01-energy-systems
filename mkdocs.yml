@@ -1,7 +1,8 @@
 site_name: Caldis Documentation
 site_description: Plateforme acausale de modélisation et simulation de systèmes énergétiques
 site_author: Caldis Team
-use_directory_urls: false
+site_url: https://sebls.github.io/ES3A_EEP-01-energy-systems/
+use_directory_urls: true
 
 theme:
   name: material
