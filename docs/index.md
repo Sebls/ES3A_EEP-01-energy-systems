@@ -1,5 +1,8 @@
 # Caldis
 
+!!! note "Educational & AI-Generated Documentation Disclaimer"
+    This documentation was generated with the assistance of AI and is intended strictly for educational and learning purposes. We are not the original authors or copyright owners of the underlying Caldis library.
+
 **Caldis** is an acausal, equation-based modeling and simulation platform in Python for thermal and energy systems (such as Brayton gas turbines, Rankine cycles, heat pumps, organic Rankine cycles, cooling loops, and storage vessels).
 
 ---
