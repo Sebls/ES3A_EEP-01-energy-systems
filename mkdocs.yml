@@ -1,6 +1,7 @@
 site_name: Caldis Documentation
 site_description: Plateforme acausale de modélisation et simulation de systèmes énergétiques
 site_author: Caldis Team
+use_directory_urls: false
 
 theme:
   name: material
@@ -27,11 +28,6 @@ theme:
     - search.highlight
     - content.code.copy
     - content.tabs.link
-
-extra_javascript:
-  - javascripts/mathjax.js
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
 
 markdown_extensions:
   - admonition
