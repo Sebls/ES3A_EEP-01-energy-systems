@@ -23,18 +23,8 @@ sol = solve(
 
 ### Execution Pipeline
 
-```mermaid
-flowchart TD
-    A[Start solve] --> B[preflight: DOF + Start Check]
-    B -->|Passed| C{try_newton_first?}
-    C -->|Yes| D[Global Damped Newton from x0]
-    D -->|Converged| E[Check Physical Validity]
-    D -->|Failed / Diverged| F[Homotopy Continuation Fallback]
-    C -->|No| F
-    F -->|Converged| E
-    F -->|Failed| G[Run Diagnostics & SVD Report]
-    E -->|Valid| H[Update Component Outputs & Return sol]
-```
+![Solver Execution Pipeline: Damped Newton and Homotopy Continuation](../assets/solver-pipeline.svg)
+
 
 ---
 

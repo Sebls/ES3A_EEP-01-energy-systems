@@ -27,16 +27,8 @@ Propagation **only** writes into a variable if its current state is `DEFAULT (0)
 
 `autostart(sys, verbose=False)` executes a fixpoint loop over direction-agnostic rules until no more variables can be updated:
 
-```mermaid
-graph TD
-    A[Level 1: Boundary & fix_port] --> B[Priority Queue of Rules]
-    B --> C{Rule matches?}
-    C -->|Inputs known & Target is DEFAULT| D[Compute Target .start]
-    D --> E[Set Target Provenance = PROPAGATED]
-    E --> B
-    C -->|No more rules fire| F[Level 3: Component Internal Seeding]
-    F --> G[System Ready to Solve]
-```
+![Autostart Propagation & Fixpoint Engine](../assets/autostart-propagation.svg)
+
 
 ### Propagation Rules
 

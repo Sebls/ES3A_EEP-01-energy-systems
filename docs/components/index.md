@@ -32,15 +32,8 @@ Caldis provides a comprehensive suite of thermal and fluid components grouped in
 
 Every component inherits from `caldis.core.component.Component` and participates in the system lifecycle:
 
-```mermaid
-graph LR
-    INIT["__init__"] --> PORTS["add_port / add_variable"]
-    PORTS --> RES[residuals]
-    RES --> SANITY[start_sanity]
-    SANITY --> SOLVE[Nonlinear Solver]
-    SOLVE --> OUTPUTS[update_outputs]
-    OUTPUTS --> EXERGY[exergy_balance]
-```
+![Component Architecture & System Lifecycle](../assets/component-lifecycle.svg)
+
 
 - **`ports`**: List of attached `FluidPort` instances.
 - **`all_variables()`**: All internal scalar variables plus port variables.

@@ -6,11 +6,7 @@ This example demonstrates dynamic DAE simulation of a rigid water storage tank h
 
 ## Schematic
 
-```
- [Cold Water Inflow] ──> [Tank: Fluid Volume + Metal Wall] ──> [Hot Water Outflow]
-                                      ▲
-                                 [Q_heater]
-```
+![Dynamic Heated Storage Tank Schematic](../assets/dynamic-tank-schematic.svg)
 
 ---
 

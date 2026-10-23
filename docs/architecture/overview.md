@@ -10,34 +10,8 @@ Most process and thermal simulators operate in a **causal** (input $\rightarrow$
 2. **Global System Assembly**: The system aggregates all component variables into a single state vector $x \in \mathbb{R}^n$ and gathers all physical and topological residuals into $F(x) \in \mathbb{R}^m$.
 3. **Multi-Stage Preflight**: Prior to invoking nonlinear solvers, the system runs explicit degree-of-freedom checking, evaluability checks, and physical sanity bounds.
 
-```mermaid
-graph TD
-    subgraph Components
-        C1[FluidBoundary]
-        C2[Compressor]
-        C3[HeatExchanger]
-        C4[Turbine]
-    end
+![Caldis Architecture & System Assembly Flow](../assets/architecture-overview.svg)
 
-    subgraph "System Assembly"
-        S[System Instance]
-        C1 -->|Variables & Residuals| S
-        C2 -->|Variables & Residuals| S
-        C3 -->|Variables & Residuals| S
-        C4 -->|Variables & Residuals| S
-        CONN["Connections a &lt;-&gt; b"] -->|Equality Residuals| S
-        CONST[System Constraints] -->|Design Residuals| S
-    end
-
-    subgraph "Preflight & Solvers"
-        S --> DOF["DOF Preflight: dim(x) == dim(F)?"]
-        DOF --> SAN[Start-Point Evaluability & Sanity]
-        SAN --> NEWT[Direct Damped Newton]
-        NEWT -->|Fallback if needed| HOMO[Homotopy Continuation]
-        NEWT --> RES["Solved State x*"]
-        HOMO --> RES
-    end
-```
 
 ---
 

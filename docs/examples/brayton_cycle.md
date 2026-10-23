@@ -6,11 +6,8 @@ This complete example models an open-cycle gas turbine consisting of an ambient 
 
 ## Schematic
 
-```
- [Air Inflow] ──> [Compressor] ──> [Combustion Chamber] ──> [Turbine] ──> [Exhaust]
-                                           ^
-                                     [Fuel Inflow]
-```
+![Open-Cycle Brayton Gas Turbine Schematic](../assets/brayton-schematic.svg)
+
 
 ---
 
