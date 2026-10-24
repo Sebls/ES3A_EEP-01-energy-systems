@@ -29,7 +29,7 @@ pip install -e .
 
 We will model a continuous air compression and cooling process:
 
-$$\text{Source} \longrightarrow \text{Compressor} \longrightarrow \text{Cooler} \longrightarrow \text{Sink}$$
+![Tutorial Open-Loop Compression & Cooling Workflow](../assets/getting-started-schematic.svg)
 
 ---
 

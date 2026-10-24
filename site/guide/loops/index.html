@@ -621,6 +621,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example-vapor-compression-heat-pump-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Vapor-Compression Heat Pump Cycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setting-mass-flow-in-a-closed-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1578,6 +1589,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example-vapor-compression-heat-pump-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Vapor-Compression Heat Pump Cycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setting-mass-flow-in-a-closed-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1636,6 +1658,7 @@
 <h1 id="closing-closed-loop-cycles">Closing Closed-Loop Cycles<a class="headerlink" href="#closing-closed-loop-cycles" title="Permanent link">&para;</a></h1>
 <p>In open-loop architectures, mass flow enters via a source and exits through a sink. In closed thermodynamic loops (e.g., closed Brayton gas cycles, vapor-compression heat pumps, ORC loops), fluid recirculates indefinitely.</p>
 <p>This introduces a fundamental topological issue: <strong>redundant mass conservation</strong>.</p>
+<p><img alt="Closed-Loop Mass Redundancy &amp; Topological Closure" src="../../assets/closed-loop-topology.svg" /></p>
 <hr />
 <h2 id="the-closed-loop-redundancy-problem">The Closed-Loop Redundancy Problem<a class="headerlink" href="#the-closed-loop-redundancy-problem" title="Permanent link">&para;</a></h2>
 <p>Consider a simple closed loop connecting four components in series:</p>
@@ -1665,6 +1688,10 @@
 <li>Enforces enthalpy continuity: <span class="arithmatex">\(h_{\text{cooler,out}} - h_{\text{comp,inl}} = 0\)</span></li>
 <li><strong>Drops the redundant mass balance equation</strong>: <span class="arithmatex">\(\dot{m}\)</span> is left to be determined by the cycle boundary conditions (e.g., total inventory, specified flow rate, or component characteristic curve).</li>
 </ul>
+<hr />
+<h2 id="example-vapor-compression-heat-pump-cycle">Example: Vapor-Compression Heat Pump Cycle<a class="headerlink" href="#example-vapor-compression-heat-pump-cycle" title="Permanent link">&para;</a></h2>
+<p>A canonical closed cycle is the 4-component vapor-compression heat pump:</p>
+<p><img alt="Vapor-Compression Heat Pump Thermodynamic Closed Loop" src="../../assets/heat-pump-schematic.svg" /></p>
 <hr />
 <h2 id="setting-mass-flow-in-a-closed-loop">Setting Mass Flow in a Closed Loop<a class="headerlink" href="#setting-mass-flow-in-a-closed-loop" title="Permanent link">&para;</a></h2>
 <p>Because no source imposes flow, you must provide one condition that fixes the flow rate or mass inventory:</p>

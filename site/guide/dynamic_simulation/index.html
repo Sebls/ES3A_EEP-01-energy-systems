@@ -621,6 +621,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#canonical-dynamic-model-heated-storage-tank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical Dynamic Model: Heated Storage Tank
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-simulation-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1533,6 +1544,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#canonical-dynamic-model-heated-storage-tank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical Dynamic Model: Heated Storage Tank
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-simulation-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1610,6 +1632,11 @@
 <div class="arithmatex">\[F(\dot{x}_d, x_d, x_a, t) = 0\]</div>
 <p>Using an implicit backward differentiation (BDF / implicit Euler) scheme:</p>
 <div class="arithmatex">\[\dot{x}_{d, k+1} \approx \frac{x_{d, k+1} - x_{d, k}}{\Delta t}\]</div>
+<p><img alt="Index-1 DAE Implicit Time-Stepping Scheme" src="../../assets/dynamic-solver-flow.svg" /></p>
+<hr />
+<h2 id="canonical-dynamic-model-heated-storage-tank">Canonical Dynamic Model: Heated Storage Tank<a class="headerlink" href="#canonical-dynamic-model-heated-storage-tank" title="Permanent link">&para;</a></h2>
+<p>A standard application is a dynamic fluid tank with internal energy and wall thermal capacitance:</p>
+<p><img alt="Dynamic Heated Storage Tank (DAE System)" src="../../assets/dynamic-tank-schematic.svg" /></p>
 <hr />
 <h2 id="the-simulation-workflow">The Simulation Workflow<a class="headerlink" href="#the-simulation-workflow" title="Permanent link">&para;</a></h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">caldis.solvers</span><span class="w"> </span><span class="kn">import</span> <span class="n">simulate</span>
