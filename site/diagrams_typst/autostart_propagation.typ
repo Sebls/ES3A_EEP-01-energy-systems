@@ -22,9 +22,9 @@
 #v(6pt)
 
 #diagram(
-  spacing: (28mm, 16mm),
-  node-corner-radius: 5pt,
-  edge-stroke: 1pt + rgb("#64748b"),
+  spacing: (28mm, 20mm),
+  node-corner-radius: 6pt,
+  edge-stroke: 1.1pt + rgb("#64748b"),
 
   // Level 1: Boundary
   node((0, 0), [
@@ -61,7 +61,7 @@
   ], stroke: success-stroke, fill: success-fill, width: 52mm),
 
   // Provenance Hierarchy Box
-  node((1, 2.2), [
+  node((1, 2.3), [
     *Start Provenance Hierarchy (Fixed Priority)*\
     #v(2pt)
     #text(size: 9pt)[
@@ -75,7 +75,7 @@
   // Edges
   edge((0, 0), (1, 0), "->", stroke: 1.2pt + rgb("#4f46e5"), label: [seed queue]),
   edge((1, 0), (1, 1), "->", stroke: accent-stroke, label: [rule match]),
-  edge((1, 1), (1, 0), "->", stroke: (paint: rgb("#3b82f6"), thickness: 1pt, dash: "dashed"), label: [iterate], bend: 40deg),
+  edge((1, 1), (1, 0), "->", stroke: (paint: rgb("#3b82f6"), thickness: 1.1pt, dash: "dashed"), label: [iterate], bend: 48deg),
   edge((1, 0), (2, 0), "->", stroke: slate-stroke, label: [no more rules]),
   edge((2, 0), (2, 1), "->", stroke: purple-stroke, label: [complete])
 )

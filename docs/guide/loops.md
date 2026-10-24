@@ -4,6 +4,8 @@ In open-loop architectures, mass flow enters via a source and exits through a si
 
 This introduces a fundamental topological issue: **redundant mass conservation**.
 
+![Closed-Loop Mass Redundancy & Topological Closure](../assets/closed-loop-topology.svg)
+
 ---
 
 ## The Closed-Loop Redundancy Problem
@@ -45,6 +47,14 @@ sys.connect(cooler.out, comp.inl, close_loop=True)
 - Enforces pressure continuity: $p_{\text{cooler,out}} - p_{\text{comp,inl}} = 0$
 - Enforces enthalpy continuity: $h_{\text{cooler,out}} - h_{\text{comp,inl}} = 0$
 - **Drops the redundant mass balance equation**: $\dot{m}$ is left to be determined by the cycle boundary conditions (e.g., total inventory, specified flow rate, or component characteristic curve).
+
+---
+
+## Example: Vapor-Compression Heat Pump Cycle
+
+A canonical closed cycle is the 4-component vapor-compression heat pump:
+
+![Vapor-Compression Heat Pump Thermodynamic Closed Loop](../assets/heat-pump-schematic.svg)
 
 ---
 

@@ -14,6 +14,8 @@ $$\dot{X} = \dot{m} \cdot e$$
 
 Where $h_0$ and $s_0$ are the specific enthalpy and entropy evaluated at $(p_0, T_0)$.
 
+![Control Volume Exergy Balance & Destruction](../assets/exergy-balance.svg)
+
 ---
 
 ## Generating an Exergy Report

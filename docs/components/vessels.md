@@ -123,6 +123,8 @@ $$C \frac{dT}{dt} - [UA (T_{\text{env}} - T) + \dot{Q}_{\text{ext}}] = 0 \quad (
 
 Composite storage systems coupling fluid volumes with container wall thermal masses.
 
+![Dynamic Heated Storage Tank (DAE System)](../assets/dynamic-tank-schematic.svg)
+
 ### Constructor Signatures
 
 ```python

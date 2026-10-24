@@ -18,6 +18,16 @@ Using an implicit backward differentiation (BDF / implicit Euler) scheme:
 
 $$\dot{x}_{d, k+1} \approx \frac{x_{d, k+1} - x_{d, k}}{\Delta t}$$
 
+![Index-1 DAE Implicit Time-Stepping Scheme](../assets/dynamic-solver-flow.svg)
+
+---
+
+## Canonical Dynamic Model: Heated Storage Tank
+
+A standard application is a dynamic fluid tank with internal energy and wall thermal capacitance:
+
+![Dynamic Heated Storage Tank (DAE System)](../assets/dynamic-tank-schematic.svg)
+
 ---
 
 ## The Simulation Workflow

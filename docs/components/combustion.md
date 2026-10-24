@@ -71,6 +71,10 @@ The component contributes 3 residuals (`residuals()`):
 
 `caldis.components.combustion.combustion_chamber.CombustionChamber` models a gas-turbine combustor with rigorous mass and energy balances referenced to standard reference conditions.
 
+### System Context: Brayton Gas Turbine Circuit
+
+![Open-Cycle Brayton Gas Turbine Thermodynamic Circuit](../assets/brayton-schematic.svg)
+
 ### Constructor & Parameters
 
 ```python
