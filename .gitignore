@@ -10,3 +10,13 @@
 /contents/
 /notes/
 /scripts/
+/caldis/
+/project/
+/exam-preparation/
+/exam_study_book/
+/old/
+
+# Local editor and tooling files
+/.vscode/
+pyrefly.toml
+texput.log
